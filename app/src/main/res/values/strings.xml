@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">InfoData</string>
+    <string name="email">Email</string>
+    <string name="password">Contraseña</string>
+    <string name="login">Acceder</string>
+    <string name="email_logout">Email</string>
+    <string name="signup">Registrar</string>
+    <string name="logout">Cerrar Sesión</string>
+</resources>
