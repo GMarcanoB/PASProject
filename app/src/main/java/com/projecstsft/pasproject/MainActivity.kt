@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.ktx.Firebase
@@ -40,7 +41,8 @@ class MainActivity : AppCompatActivity() {
                 task ->
                 if(task.isSuccessful){
                     val user = FirebaseAuth.currentUser
-                    setContentView(R.layout.activity_main)
+                   // setContentView(R.layout.activity_main)
+                    Toast.makeText(baseContext, user?.uid.toString(), Toast.LENGTH_SHORT).show()
                 }
             }
     }
