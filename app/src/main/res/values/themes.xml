@@ -9,7 +9,7 @@
 
     <style name="Theme.App.Starting" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">@color/background</item>
-        <item name="windowSplashScreenAnimatedIcon">@drawable/logoinfodata</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/splashinfodata</item>
         <item name="windowSplashScreenAnimationDuration">300</item>
         <item name="postSplashScreenTheme">@style/Base.Theme.PASProject</item>
     </style>
