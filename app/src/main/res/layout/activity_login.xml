@@ -38,7 +38,7 @@
             android:hint="@string/email"
             android:inputType="text|textEmailAddress|textAutoComplete"
             android:minHeight="48dp"
-            android:textColor="@color/white" />
+            android:textColor="@color/black" />
 
         <Space
             android:layout_width="match_parent"
@@ -54,7 +54,7 @@
             android:hint="@string/password"
             android:inputType="text|textPassword"
             android:minHeight="48dp"
-            android:textColor="@color/white" />
+            android:textColor="@color/black" />
 
         <Space
             android:layout_width="match_parent"
