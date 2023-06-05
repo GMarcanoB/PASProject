@@ -7,8 +7,6 @@
     <item android:drawable="@color/background">
     </item>
     <item>
-        <bitmap android:src="@drawable/splashinfodata">
 
-        </bitmap>
     </item>
 </layer-list>

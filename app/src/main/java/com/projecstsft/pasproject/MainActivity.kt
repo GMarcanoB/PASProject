@@ -4,11 +4,13 @@ package com.projecstsft.pasproject
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 //import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import com.google.android.material.color.DynamicColors
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -20,14 +22,16 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
         val screenSplash = installSplashScreen()
-
         super.onCreate(savedInstanceState)
+
         //setContentView(R.layout.activity_main)
         //setContentView(R.layout.activity_login)
         val loginBtn: Button = findViewById(R.id.loginButton)
         val email : EditText = findViewById(R.id.editEmailText)
         val password: EditText = findViewById(R.id.editPassword)
         firebaseAuth = Firebase.auth
+
+        
         /*if(email.text.isEmpty() or password.text.isEmpty()){
             Toast.makeText(baseContext, "Debe llenar todos los campos", Toast.LENGTH_SHORT).show()
         }else {
@@ -35,6 +39,7 @@ class MainActivity : AppCompatActivity() {
                 signIng(email.text.toString(),password.text.toString())
             }
         }*/
+
         loginBtn.setOnClickListener {
             signIng(email.text.toString(),password.text.toString())
         }
