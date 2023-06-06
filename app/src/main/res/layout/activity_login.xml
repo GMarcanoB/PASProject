@@ -7,6 +7,7 @@
     tools:context=".LoginActivity">
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -54,13 +55,8 @@
             android:hint="@string/password"
             android:inputType="text|textPassword"
             android:singleLine="false"
-            android:text="@string/password"
             android:textColor="#ACA9AC"
             android:textSize="24sp" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="20dp" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -75,20 +71,57 @@
 
         </LinearLayout>
 
-        <Button
-            android:id="@+id/loginButton"
-            style="@style/Widget.Material3.Button"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="6"
-            android:paddingLeft="60dp"
-            android:paddingRight="60dp"
-            android:text="@string/login"
-            android:textColor="@color/white"
-            android:textColorHighlight="@color/material_dynamic_primary50"
-            android:textColorLink="@color/design_default_color_primary_dark"
-            android:textSize="20sp" />
-
     </LinearLayout>
+
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="564dp"
+        android:layout_weight="10"
+        android:paddingLeft="60dp"
+        android:paddingRight="60dp"
+        android:text="@string/login"
+        android:textColor="@color/white"
+        android:textColorHighlight="@color/material_dynamic_primary50"
+        android:textColorLink="@color/design_default_color_primary_dark"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/forgotpswd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="204dp"
+        android:text="¿Olvidaste tu contraseña?"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/newaccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="44dp"
+        android:text="¿No tienes cuenta?"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.317"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/signup"
+        android:layout_width="74dp"
+        android:layout_height="18dp"
+        android:layout_marginBottom="44dp"
+        android:text="Resgístrate"
+        android:textColor="#2196F3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.679"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
