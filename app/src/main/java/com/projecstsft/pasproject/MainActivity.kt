@@ -23,15 +23,14 @@ class MainActivity : AppCompatActivity() {
 
         val screenSplash = installSplashScreen()
         super.onCreate(savedInstanceState)
-
-        //setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_main)
         //setContentView(R.layout.activity_login)
-        val loginBtn: Button = findViewById(R.id.loginButton)
+        /*val loginBtn: Button = findViewById(R.id.loginButton)
         val email : EditText = findViewById(R.id.editEmailText)
         val password: EditText = findViewById(R.id.editPassword)
-        firebaseAuth = Firebase.auth
+        firebaseAuth = Firebase.auth*/
 
-        
+
         /*if(email.text.isEmpty() or password.text.isEmpty()){
             Toast.makeText(baseContext, "Debe llenar todos los campos", Toast.LENGTH_SHORT).show()
         }else {
@@ -40,16 +39,16 @@ class MainActivity : AppCompatActivity() {
             }
         }*/
 
-        loginBtn.setOnClickListener {
+       /* loginBtn.setOnClickListener {
             signIng(email.text.toString(),password.text.toString())
-        }
+        }*/
         /*Thread.sleep(1000)
         screenSplash.setKeepOnScreenCondition{true}*/
         /*val intent = Intent(this, SplashActivity::class.java)
         startActivity(intent)
         finish()*/
     }
-    private fun signIng(email:String, password: String){
+   /* private fun signIng(email:String, password: String){
         firebaseAuth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if(task.isSuccessful){
@@ -63,5 +62,5 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(baseContext, "Verifique su email y/o password", Toast.LENGTH_SHORT).show()
                 }
             }
-    }
+    }*/
 }
