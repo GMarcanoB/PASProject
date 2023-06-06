@@ -2,8 +2,10 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="colorPrimaryBtn">#1772FD</color>
+    <color name="colorPrimaryBtn">#0242E4</color>
     <color name="colorLogoutBtn">#004C81</color>
     <color name="colorSignupBtn">#FFBC97</color>
     <color name="background">#CEDEF6</color>
+    <color name="custom">#2174EF</color>
+    <color name="toolbar">#005BE5</color>
 </resources>

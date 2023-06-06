@@ -10,23 +10,23 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="88dp"
         android:layout_marginEnd="16dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="183dp"
-            android:layout_height="183dp"
+            android:layout_width="174dp"
+            android:layout_height="163dp"
             android:layout_gravity="center_horizontal"
             android:layout_margin="@android:dimen/app_icon_size"
             android:contentDescription="@string/app_name"
             android:scaleType="fitXY"
-            android:src="@drawable/logoinfodata"
-            app:srcCompat="@drawable/logoinfodata" />
+            android:src="@drawable/logo2" />
 
         <EditText
             android:id="@+id/editEmailText"
@@ -34,15 +34,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:autofillHints=""
-            android:ems="10"
             android:hint="@string/email"
             android:inputType="text|textEmailAddress|textAutoComplete"
-            android:minHeight="48dp"
-            android:textColor="@color/white" />
+            android:minHeight="60dp"
+            android:textColor="@color/black"
+            android:textSize="24sp" />
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="8dp" />
+            android:layout_height="20dp" />
 
         <EditText
             android:id="@+id/editPassword"
@@ -53,37 +53,42 @@
             android:ems="10"
             android:hint="@string/password"
             android:inputType="text|textPassword"
-            android:minHeight="48dp"
-            android:textColor="@color/white" />
+            android:singleLine="false"
+            android:text="@string/password"
+            android:textColor="#ACA9AC"
+            android:textSize="24sp" />
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="8dp" />
+            android:layout_height="20dp" />
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <Space
-                android:layout_width="8dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
 
-            <Button
-                android:id="@+id/loginButton"
-                style="@style/Widget.Material3.Button"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_weight="1"
-                android:paddingLeft="48dp"
-                android:paddingRight="48dp"
-                android:text="@string/login"
-                android:textSize="20sp"
-                android:textColor="@color/white"
-                android:textColorHighlight="@color/material_dynamic_primary50"
-                android:textColorLink="@color/design_default_color_primary_dark" />
         </LinearLayout>
 
+        <Button
+            android:id="@+id/loginButton"
+            style="@style/Widget.Material3.Button"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="6"
+            android:paddingLeft="60dp"
+            android:paddingRight="60dp"
+            android:text="@string/login"
+            android:textColor="@color/white"
+            android:textColorHighlight="@color/material_dynamic_primary50"
+            android:textColorLink="@color/design_default_color_primary_dark"
+            android:textSize="20sp" />
+
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
