@@ -8,4 +8,5 @@
     <color name="background">#CEDEF6</color>
     <color name="custom">#2174EF</color>
     <color name="toolbar">#005BE5</color>
+    <color name="hints">#424242</color>
 </resources>
