@@ -2,6 +2,7 @@
     <string name="app_name">InfoData</string>
     <string name="email">Email</string>
     <string name="password">Contraseña</string>
+    <string name="confirm">Confirmar Contraseña</string>
     <string name="login">Acceder</string>
     <string name="email_logout">Email</string>
     <string name="signup">Registrar</string>
@@ -9,4 +10,7 @@
     <string name="forgottext">¿Olvidaste tu contraseña?</string>
     <string name="qnewuser">¿No tienes cuenta?</string>
     <string name="newregister">Resgístrate</string>
+    <string name="register">Registrar</string>
+    <string name="regemail">Email</string>
+    <string name="regname">Nombre</string>
 </resources>
