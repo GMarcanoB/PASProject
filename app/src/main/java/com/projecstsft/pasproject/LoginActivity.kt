@@ -1,10 +1,12 @@
 package com.projecstsft.pasproject
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
@@ -21,13 +23,13 @@ class LoginActivity : AppCompatActivity() {
         val loginBtn: Button = findViewById(R.id.loginButton)
         val email : EditText = findViewById(R.id.editEmailText)
         val password : EditText = findViewById(R.id.editPassword)
+        val singup : TextView = findViewById(R.id.signup)
 
         loginBtn.setOnClickListener {
            when {
                 password.text.toString().isEmpty() || email.text.toString().isEmpty() -> {
                     Toast.makeText(this, "Email o contraseña incorrectos", Toast.LENGTH_SHORT).show()
                 }
-
                 else -> {
                     logIn(email.text.toString(), password.text.toString())
                 }
@@ -57,10 +59,15 @@ class LoginActivity : AppCompatActivity() {
             }
     }
 
+
     private fun updateUI(user: FirebaseUser?) {
 
     }
     private fun reload() {
         TODO("Not yet implemented")
+    }
+
+    fun clickTextView(view: View) {
+        setContentView(R.layout.activity_register)
     }
 }
