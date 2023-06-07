@@ -6,4 +6,7 @@
     <string name="email_logout">Email</string>
     <string name="signup">Registrar</string>
     <string name="logout">Cerrar Sesión</string>
+    <string name="forgottext">¿Olvidaste tu contraseña?</string>
+    <string name="qnewuser">¿No tienes cuenta?</string>
+    <string name="newregister">Resgístrate</string>
 </resources>
