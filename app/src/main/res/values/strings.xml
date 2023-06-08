@@ -13,4 +13,6 @@
     <string name="register">Registrar</string>
     <string name="regemail">Email</string>
     <string name="regname">Nombre</string>
+    <string name="text_login">¿Ya tienes una cuenta?</string>
+    <string name="signin">Iniciar Sesión</string>
 </resources>

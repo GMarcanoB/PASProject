@@ -4,6 +4,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="colorPrimaryBtn">#0242E4</color>
     <color name="colorLogoutBtn">#004C81</color>
+    <color name="btnlink">#D7155385</color>
     <color name="colorSignupBtn">#FFBC97</color>
     <color name="background">#CEDEF6</color>
     <color name="custom">#2174EF</color>
