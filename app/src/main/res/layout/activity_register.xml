@@ -32,56 +32,66 @@
         android:layout_marginBottom="84dp"
         android:text="@string/register"
         android:textSize="16sp"
+        android:nextFocusDown="@+id/loginIn"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/textName"
+        style="@style/Widget.AppCompat.AutoCompleteTextView"
         android:layout_width="300dp"
         android:layout_height="60dp"
         android:layout_marginTop="32dp"
+        android:autofillHints=""
         android:ems="10"
         android:hint="@string/regname"
-        android:autofillHints=""
         android:inputType="text|textPersonName|textAutoComplete"
+        android:nextFocusDown="@id/RegEmail"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress"
+        android:id="@+id/RegEmail"
+        style="@style/Widget.AppCompat.AutoCompleteTextView"
         android:layout_width="300dp"
         android:layout_height="60dp"
         android:layout_marginTop="24dp"
+        android:minHeight="60dp"
+        android:autofillHints=""
         android:ems="10"
         android:hint="@string/email"
-        android:inputType="textEmailAddress"
-        android:autofillHints=""
+        android:inputType="text|textEmailAddress|textAutoComplete"
+        android:nextFocusDown="@id/regPassword"
+        android:singleLine="true"
         android:textSize="16sp"
-        android:maxLength="8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textName" />
 
     <EditText
         android:id="@+id/regPassword"
+        style="@style/Widget.AppCompat.AutoCompleteTextView"
         android:layout_width="300dp"
         android:layout_height="60dp"
         android:layout_marginTop="24dp"
+        android:autofillHints=""
         android:ems="10"
         android:hint="@string/password"
         android:inputType="textPassword"
-        android:autofillHints=""
-        android:textSize="16sp"
         android:maxLength="8"
+        android:nextFocusDown="@id/confirmpswd"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress" />
+        app:layout_constraintTop_toBottomOf="@+id/RegEmail" />
 
     <EditText
-        android:id="@+id/editTextTextPassword2"
+        android:id="@+id/confirmpswd"
+        style="@style/Widget.AppCompat.AutoCompleteTextView"
         android:layout_width="300dp"
         android:layout_height="60dp"
         android:layout_marginTop="24dp"
@@ -89,12 +99,43 @@
         android:ems="10"
         android:hint="@string/confirm"
         android:inputType="textPassword"
+        android:maxLength="8"
+        android:nextFocusDown="@id/loginIn"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/btnRegister"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/regPassword"
+        app:layout_constraintTop_toBottomOf="@+id/regPassword" />
+
+    <TextView
+        android:id="@+id/loginIn"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginTop="24dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:onClick="onLinkClick"
+        android:minHeight="48dp"
+        android:text="@string/signin"
+        android:textColor="@color/btnlink"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.74"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnRegister"
+         />
+
+    <TextView
+        android:id="@+id/text_loginin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:minHeight="48dp"
+        android:text="@string/text_login"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.312"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnRegister"
         app:layout_constraintVertical_bias="0.0" />
 
 
