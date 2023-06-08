@@ -34,6 +34,7 @@
         android:textSize="16sp"
         android:nextFocusDown="@+id/loginIn"
         android:textColor="@color/white"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -114,23 +115,24 @@
         android:layout_marginTop="24dp"
         android:clickable="true"
         android:focusable="true"
-        android:onClick="onLinkClick"
+        android:gravity="center"
         android:minHeight="48dp"
+        android:onClick="onLinkClick"
         android:text="@string/signin"
         android:textColor="@color/btnlink"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.74"
+        app:layout_constraintHorizontal_bias="0.749"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnRegister"
-         />
+        app:layout_constraintTop_toBottomOf="@+id/btnRegister" />
 
     <TextView
         android:id="@+id/text_loginin"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:layout_marginTop="24dp"
         android:minHeight="48dp"
         android:text="@string/text_login"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.312"
