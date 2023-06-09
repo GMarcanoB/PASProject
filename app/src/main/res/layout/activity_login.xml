@@ -5,12 +5,60 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LoginActivity">
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@id/guidelineCenter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5"
+        />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9"
+        />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1"
+        />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.80"
+        />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineBottomB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.95"
+        />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineHcenter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.02" />
 
     <Button
         android:id="@+id/loginButton"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginTop="568dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="50dp"
         android:layout_weight="10"
         android:paddingLeft="60dp"
         android:paddingRight="60dp"
@@ -19,111 +67,104 @@
         android:textColorHighlight="@color/material_dynamic_primary50"
         android:textColorLink="@color/design_default_color_primary_dark"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.51"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/guidelineBottomB"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineStart"
+        app:layout_constraintStart_toStartOf="@+id/guidelineEnd"
+        app:layout_constraintTop_toBottomOf="@+id/forgotpswd"
+        app:layout_constraintVertical_bias="0.208" />
 
     <TextView
         android:id="@+id/forgotpswd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:text="@string/forgottext"
         android:textColor="@color/btnlink"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.667" />
+        app:layout_constraintEnd_toStartOf="@+id/guidelineStart"
+        app:layout_constraintStart_toStartOf="@+id/guidelineEnd"
+        app:layout_constraintTop_toBottomOf="@+id/textPassword" />
 
     <EditText
-        android:id="@+id/editPassword"
-        style="@style/Widget.AppCompat.AutoCompleteTextView"
-        android:layout_width="300dp"
+        android:id="@+id/textPassword"
+        android:layout_width="330dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="44dp"
         android:autofillHints=""
         android:hint="@string/password"
         android:inputType="text|textPassword"
         android:maxLength="8"
-        android:minHeight="60dp"
+        android:minHeight="50dp"
         android:nextFocusDown="@id/loginButton"
-        android:selectAllOnFocus="false"
-        android:singleLine="false"
-        android:textColor="@color/black"
-        android:textColorHint="#8E8C8C"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editEmailText" />
+        app:layout_constraintEnd_toStartOf="@+id/guidelineStart"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guidelineEnd"
+        app:layout_constraintTop_toBottomOf="@+id/textEmail" />
 
     <EditText
-        android:id="@+id/editEmailText"
-        style="@style/Widget.AppCompat.AutoCompleteTextView"
-        android:layout_width="300dp"
+        android:id="@+id/textEmail"
+        android:layout_width="330dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:autofillHints=""
-        android:ems="11"
+        android:autofillHints="@string/email"
         android:hint="@string/email"
         android:inputType="text|textEmailAddress|textAutoComplete"
-        android:minHeight="60dp"
-        android:nextFocusDown="@id/editPassword"
-        android:textColor="@color/black"
-        android:textColorHint="#8E8C8C"
+        android:minHeight="50dp"
+        android:nextFocusDown="@id/textPassword"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintEnd_toStartOf="@+id/guidelineStart"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintTop_toBottomOf="@id/logo"
+        app:layout_constraintBottom_toTopOf="@id/textPassword"
+        app:layout_constraintStart_toStartOf="@+id/guidelineEnd"
+        tools:layout_editor_absoluteY="263dp" />
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="174dp"
-        android:layout_height="163dp"
+        android:id="@+id/logo"
+        android:layout_width="150dp"
+        android:layout_height="160dp"
         android:layout_gravity="center_horizontal"
         android:layout_margin="@android:dimen/app_icon_size"
-        android:layout_marginTop="60dp"
         android:contentDescription="@string/app_name"
         android:scaleType="fitXY"
         android:src="@drawable/logo2"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/textEmail"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.527"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.117" />
+        app:layout_constraintTop_toTopOf="@+id/guidelineBottom"
+        app:layout_constraintVertical_bias="0.2"
+        />
 
     <TextView
         android:id="@+id/newaccount"
         android:layout_width="wrap_content"
-        android:layout_height="60dp"
+        android:layout_height="wrap_content"
         android:singleLine="true"
         android:text="@string/qnewuser"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineBottomB"
         app:layout_constraintEnd_toStartOf="@+id/signup"
-        app:layout_constraintHorizontal_bias="0.862"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guidelineEnd"
         app:layout_constraintTop_toBottomOf="@+id/loginButton"
-        app:layout_constraintVertical_bias="0.509" />
+        app:layout_constraintVertical_bias="0.494" />
 
     <TextView
         android:id="@+id/signup"
         android:layout_width="wrap_content"
-        android:layout_height="60dp"
+        android:layout_height="0dp"
         android:clickable="true"
         android:focusable="true"
         android:onClick="clickTextView"
         android:singleLine="true"
+        android:gravity="center"
         android:text="@string/newregister"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
         android:textColor="@color/btnlink"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.69"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineBottomB"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineStart"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/newaccount"
         app:layout_constraintTop_toBottomOf="@+id/loginButton"
-        app:layout_constraintVertical_bias="0.509" />
+        app:layout_constraintVertical_bias="0.5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -22,9 +21,9 @@ class LoginActivity : AppCompatActivity() {
 
         auth = Firebase.auth
         val loginBtn: Button = findViewById(R.id.loginButton)
-        val email : EditText = findViewById(R.id.editEmailText)
-        val password : EditText = findViewById(R.id.editPassword)
-        val singup : TextView = findViewById(R.id.signup)
+        val email : EditText = findViewById(R.id.textEmail)
+        val password : EditText = findViewById(R.id.textPassword)
+       // val singup : TextView = findViewById(R.id.signup)
 
         loginBtn.setOnClickListener {
            when {
@@ -45,10 +44,6 @@ class LoginActivity : AppCompatActivity() {
             .addOnCompleteListener(this){task ->
                 if(task.isSuccessful){
                     val user = auth.currentUser
-                    //setContentView(R.layout.activity_main)
-                   //Toast.makeText(baseContext, user?.uid.toString(), Toast.LENGTH_SHORT).show()
-                    //val intnt = Intent(this, MainActivity::class.java)
-                   // startActivity(intnt)
                     Toast.makeText(this,"Operación Exitosa!", Toast.LENGTH_SHORT).show()
                     updateUI(user)
                 }
