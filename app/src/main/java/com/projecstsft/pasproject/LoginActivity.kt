@@ -1,37 +1,40 @@
 package com.projecstsft.pasproject
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.projecstsft.pasproject.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
+    private lateinit var loginBinding: ActivityLoginBinding
+    private lateinit var registerBinding: ActivityLoginBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        loginBinding = ActivityLoginBinding.inflate(layoutInflater)
+        setContentView(loginBinding.root)
 
         auth = Firebase.auth
-        val loginBtn: Button = findViewById(R.id.loginButton)
-        val email : EditText = findViewById(R.id.textEmail)
-        val password : EditText = findViewById(R.id.textPassword)
-       // val singup : TextView = findViewById(R.id.signup)
 
-        loginBtn.setOnClickListener {
+       val email = loginBinding.textEmail.text.toString()
+       val password = loginBinding.textPassword.text.toString()
+
+
+        loginBinding.loginButton.setOnClickListener {
            when {
-                password.text.toString().isEmpty() || email.text.toString().isEmpty() -> {
+                email.isEmpty() || password.isEmpty() -> {
                     Toast.makeText(this, "Email o contraseña incorrectos", Toast.LENGTH_SHORT).show()
                 }
                 else -> {
-                    logIn(email.text.toString(), password.text.toString())
+                    logIn(email, password)
                 }
             }
 
@@ -64,6 +67,10 @@ class LoginActivity : AppCompatActivity() {
     }
 
     fun clickTextView(view: View) {
-        setContentView(R.layout.activity_register)
+       loginBinding.signup.setOnClickListener{
+           val intent = Intent(this,RegisterActivity::class.java)
+           startActivity(intent)
+       }
     }
+
 }
