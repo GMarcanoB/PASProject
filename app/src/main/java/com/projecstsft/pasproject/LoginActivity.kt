@@ -15,7 +15,6 @@ class LoginActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var loginBinding: ActivityLoginBinding
-    private lateinit var registerBinding: ActivityLoginBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,6 +38,8 @@ class LoginActivity : AppCompatActivity() {
             }
 
         }
+
+        goRegister()
 
     }
 
@@ -65,12 +66,11 @@ class LoginActivity : AppCompatActivity() {
     private fun reload() {
         TODO("Not yet implemented")
     }
-
-    fun clickTextView(view: View) {
-       loginBinding.signup.setOnClickListener{
-           val intent = Intent(this,RegisterActivity::class.java)
-           startActivity(intent)
-       }
+    private fun goRegister(){
+        loginBinding.signup.setOnClickListener{
+            val intent = Intent(this,RegisterActivity::class.java)
+            startActivity(intent)
+        }
     }
 
 }
