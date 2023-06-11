@@ -1,66 +1,66 @@
 package com.projecstsft.pasproject
-
-//import android.content.Intent
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-//import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
-import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import com.google.android.material.color.DynamicColors
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
+
+import com.android.volley.Request
+import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.Volley
+import com.google.gson.Gson
+
+import com.projecstsft.pasproject.databinding.ActivityMainBinding
+
+import java.util.*
+
+data class WeatherData(
+    val weather: List<Weather>
+)
+
+data class Weather(
+    val main: String
+)
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var firebaseAuth: FirebaseAuth
-    private lateinit var authStateListener: FirebaseAuth.AuthStateListener
-
+    private lateinit var mainBinding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
-
-        val screenSplash = installSplashScreen()
+        val apiKey = "0d8f484ceb801b67cd1e1c63ea5e2d52" // API Key de OpenWeatherMap
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        //setContentView(R.layout.activity_login)
-        /*val loginBtn: Button = findViewById(R.id.loginButton)
-        val email : EditText = findViewById(R.id.editEmailText)
-        val password: EditText = findViewById(R.id.editPassword)
-        firebaseAuth = Firebase.auth*/
 
+        mainBinding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(mainBinding.root)
 
-        /*if(email.text.isEmpty() or password.text.isEmpty()){
-            Toast.makeText(baseContext, "Debe llenar todos los campos", Toast.LENGTH_SHORT).show()
-        }else {
-            loginBtn.setOnClickListener() {
-                signIng(email.text.toString(),password.text.toString())
-            }
-        }*/
+        // Consulta la API de clima
+        val url = "https://api.openweathermap.org/data/2.5/weather?q=Madrid&appid=$apiKey"
+        val requestQueue = Volley.newRequestQueue(this)
 
-       /* loginBtn.setOnClickListener {
-            signIng(email.text.toString(),password.text.toString())
-        }*/
-        /*Thread.sleep(1000)
-        screenSplash.setKeepOnScreenCondition{true}*/
-        /*val intent = Intent(this, SplashActivity::class.java)
-        startActivity(intent)
-        finish()*/
+        val jsonObjectRequest = JsonObjectRequest(Request.Method.GET, url, null,
+            { response ->
+                val weatherData = Gson().fromJson(response.toString(), WeatherData::class.java)
+                val weatherEmoji = getWeatherEmoji(weatherData.weather[0].main, isDayTime())
+                mainBinding.weatherEmojiTextView.text = weatherEmoji
+//                temperatureTextView.text = "${weatherData.main.temp}°C"
+            },
+            { error ->
+                error.printStackTrace()
+            })
+
+        requestQueue.add(jsonObjectRequest)
     }
-   /* private fun signIng(email:String, password: String){
-        firebaseAuth.signInWithEmailAndPassword(email, password)
-            .addOnCompleteListener(this) { task ->
-                if(task.isSuccessful){
-                    val user = firebaseAuth.currentUser
-                    //setContentView(R.layout.activity_main)
-                    Toast.makeText(baseContext, user?.uid.toString(), Toast.LENGTH_SHORT).show()
-                    val intnt = Intent(this, MainActivity::class.java)
-                    startActivity(intnt)
-                }
-                else{
-                    Toast.makeText(baseContext, "Verifique su email y/o password", Toast.LENGTH_SHORT).show()
-                }
-            }
-    }*/
+
+    private fun getWeatherEmoji(weather: String, isDayTime: Boolean): String {
+        return when (weather.lowercase()) {
+            "clear" -> if (isDayTime) "☀️" else "🌙"
+            "clouds" -> "☁️"
+            "rain" -> "🌧️"
+            "snow" -> "❄️"
+            "thunderstorm" -> "⛈️"
+            "drizzle" -> "🌦️"
+            else -> "❓"
+        }
+    }
+
+    private fun isDayTime(): Boolean {
+        val calendar = Calendar.getInstance()
+        val currentHour = calendar.get(Calendar.HOUR_OF_DAY)
+        return currentHour in 6..18
+    }
 }
