@@ -16,17 +16,18 @@ class RegisterActivity : AppCompatActivity() {
         registerBinding =  ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(registerBinding.root)
 
-
+        backLogin()
     }
 
-    fun clickTextView(view: View) {}
     fun createAccount(view: View) {}
-    fun backLogin(view: View) {
+
+    private fun backLogin(){
         registerBinding.textloginIn.setOnClickListener{
             val intent = Intent(this,LoginActivity::class.java)
             startActivity(intent)
         }
     }
+
 
 
 }

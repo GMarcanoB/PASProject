@@ -171,7 +171,6 @@
      android:layout_marginEnd="20dp"
      android:clickable="true"
      android:focusable="true"
-     android:onClick="backLogin"
      android:text="@string/signin"
      android:textColor="@color/btnlink"
      android:gravity="center"
