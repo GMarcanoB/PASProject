@@ -31,6 +31,7 @@ class LoginActivity : AppCompatActivity() {
            when {
                 email.isEmpty() || password.isEmpty() -> {
                     Toast.makeText(this, "Email o contraseña incorrectos", Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this,MainActivity::class.java))
                 }
                 else -> {
                     logIn(email, password)
