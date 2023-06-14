@@ -120,7 +120,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
                 android:textStyle="bold"
-                android:text="Bluetooth"/>
+                android:text="Volumen"/>
 
             <com.google.android.material.slider.RangeSlider
                 android:id="@+id/rsVolume"
