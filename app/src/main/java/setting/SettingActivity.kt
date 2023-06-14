@@ -3,6 +3,9 @@ package setting
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO
+import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
@@ -59,6 +62,9 @@ class SettingActivity : AppCompatActivity() {
         }
 
         binding.switchDarkMode.setOnCheckedChangeListener { _, value ->
+            if(value) enableDarkMode()
+            else disableDarkMode()
+
             CoroutineScope(Dispatchers.IO).launch {
                 saveOpt(KEY_DARK_MODE, value)
             }
@@ -91,5 +97,15 @@ class SettingActivity : AppCompatActivity() {
                 darkMode = it[booleanPreferencesKey(KEY_DARK_MODE)] ?: false,
             )
         }
+    }
+
+    private fun enableDarkMode(){
+        AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_YES)
+        delegate.applyDayNight()
+    }
+
+    private fun disableDarkMode(){
+        AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_NO)
+        delegate.applyDayNight()
     }
 }
