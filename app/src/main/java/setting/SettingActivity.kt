@@ -20,6 +20,7 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
+import android.media.AudioManager
 
 val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "setting")
 class SettingActivity : AppCompatActivity() {
@@ -32,6 +33,7 @@ class SettingActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySettingBinding
     private var firstTime: Boolean = true
+    private lateinit var audioManager: AudioManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,6 +52,8 @@ class SettingActivity : AppCompatActivity() {
                 }
             }
         }
+
+        audioManager = getSystemService(Context.AUDIO_SERVICE) as AudioManager
 
         initUI()
     }
@@ -75,12 +79,25 @@ class SettingActivity : AppCompatActivity() {
                 saveOpt(KEY_BLUETOOTH, value)
             }
         }
+
+        binding.rsVolume.addOnChangeListener { _, value, _ ->
+            CoroutineScope(Dispatchers.IO).launch {
+                saveVolume(value.toInt())
+            }
+            setVolumeLevel(value.toInt())
+        }
     }
 
     private suspend fun saveVolume(value: Int){
         dataStore.edit { it ->
             it[intPreferencesKey(VOLUME_LVL)] = value
         }
+    }
+
+    private fun setVolumeLevel(volume: Int) {
+        val maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC)
+        val scaledVolume = (maxVolume * (volume.toFloat() / 100)).toInt()
+        audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, scaledVolume, 0)
     }
 
     private suspend fun saveOpt(key:String, value:Boolean){
