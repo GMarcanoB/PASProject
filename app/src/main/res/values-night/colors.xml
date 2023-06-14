@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#383838</color>
-    <color name="white">#FFFFFF</color>
+    <color name="black">#D5D5D5</color>
+    <color name="white">#ECECEC</color>
     <color name="colorPrimaryBtn">#0242E4</color>
     <color name="colorLogoutBtn">#004C81</color>
     <color name="btnlink">#D7155385</color>
