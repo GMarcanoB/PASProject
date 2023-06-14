@@ -123,6 +123,7 @@
                 android:text="Bluetooth"/>
 
             <com.google.android.material.slider.RangeSlider
+                android:id="@+id/rsVolume"
                 android:valueFrom="0"
                 android:stepSize="1"
                 android:valueTo="100"
