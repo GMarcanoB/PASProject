@@ -63,6 +63,7 @@ class SettingActivity : AppCompatActivity() {
             CoroutineScope(Dispatchers.IO).launch {
                 saveVolume(value.toInt())
             }
+            setVolumeLevel(value.toInt())
         }
 
         binding.switchDarkMode.setOnCheckedChangeListener { _, value ->
@@ -78,13 +79,6 @@ class SettingActivity : AppCompatActivity() {
             CoroutineScope(Dispatchers.IO).launch {
                 saveOpt(KEY_BLUETOOTH, value)
             }
-        }
-
-        binding.rsVolume.addOnChangeListener { _, value, _ ->
-            CoroutineScope(Dispatchers.IO).launch {
-                saveVolume(value.toInt())
-            }
-            setVolumeLevel(value.toInt())
         }
     }
 
