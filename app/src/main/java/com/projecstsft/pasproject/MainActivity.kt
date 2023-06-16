@@ -11,11 +11,12 @@ import android.view.MenuItem
 class MainActivity : AppCompatActivity() {
     private lateinit var mainBinding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
         mainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mainBinding.root)
         mainBinding.BtnSetting.setOnClickListener { navToSetting() }
 
-        super.onCreate(savedInstanceState)
     }
 
     private fun navToSetting() {
