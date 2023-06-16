@@ -32,9 +32,12 @@
             android:name=".RegisterActivity"
             android:exported="false" />
         <activity
+            android:theme="@style/home"
             android:name=".MainActivity"
             android:exported="false"/>
-        <activity android:name="setting.SettingActivity" />
+        <activity
+            android:theme="@style/internal"
+            android:name="setting.SettingActivity" />
     </application>
 
 </manifest>
