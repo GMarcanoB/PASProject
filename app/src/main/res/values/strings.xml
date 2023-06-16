@@ -15,4 +15,5 @@
     <string name="regname">Nombre</string>
     <string name="text_login">¿Ya tienes una cuenta?</string>
     <string name="signin">Iniciar Sesión</string>
+    <string name="settings">Ajustes</string>
 </resources>
