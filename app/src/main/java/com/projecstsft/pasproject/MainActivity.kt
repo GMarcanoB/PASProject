@@ -15,12 +15,6 @@ class MainActivity : AppCompatActivity() {
 
         mainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mainBinding.root)
-        mainBinding.BtnSetting.setOnClickListener { navToSetting() }
-
-    }
-
-    private fun navToSetting() {
-        startActivity(Intent(this, SettingActivity::class.java))
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -32,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         return when (item.itemId) {
             R.id.action_settings -> {
                 // Lógica para el ítem de ajustes
-                navToSetting()
+                startActivity(Intent(this, SettingActivity::class.java))
                 true
             }
             R.id.action_logout -> {
