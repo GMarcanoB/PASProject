@@ -11,10 +11,13 @@ import kotlinx.coroutines.launch
 import okhttp3.*
 import org.json.JSONObject
 import android.util.Log
-import android.widget.TextView
+import com.projecstsft.pasproject.databinding.FragmentAirQualityBinding
 import java.io.IOException
 
 class AirQualityFragment : Fragment() {
+    private var _binding:FragmentAirQualityBinding? = null
+    private val binding get() = _binding!!
+
     private val apiKey = "d1542388-a4ef-4ed0-9021-ce78bc21a477" // API key de IQAir
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,7 +28,8 @@ class AirQualityFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_air_quality, container, false)
+        _binding = FragmentAirQualityBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -72,11 +76,10 @@ class AirQualityFragment : Fragment() {
             else -> "🤢" // Calidad del aire no saludable
         }
 
-        Log.d("emoji", emoji)
-
-//        activity?.runOnUiThread {
-//            emojiTextView.text = emoji
-//        }
+        activity?.runOnUiThread {
+            binding.emojiTextView.text = emoji
+            binding.numberTextView.text = airQualityIndex.toString()
+        }
     }
     companion object {
         @JvmStatic
