@@ -21,6 +21,9 @@ import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import android.media.AudioManager
+import android.view.Menu
+import android.view.MenuItem
+import com.projecstsft.pasproject.R
 
 val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "setting")
 class SettingActivity : AppCompatActivity() {
@@ -40,6 +43,9 @@ class SettingActivity : AppCompatActivity() {
         binding = ActivitySettingBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.title = getString(R.string.settings)
+
         CoroutineScope(Dispatchers.IO).launch {
             getSetting().filter { firstTime }.collect{settingModel ->
                 if(settingModel != null){
@@ -56,6 +62,20 @@ class SettingActivity : AppCompatActivity() {
         audioManager = getSystemService(Context.AUDIO_SERVICE) as AudioManager
 
         initUI()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        return false
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                onBackPressed()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     private fun initUI() {

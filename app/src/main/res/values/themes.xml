@@ -14,4 +14,13 @@
         <item name="windowSplashScreenAnimationDuration">1000</item>
         <item name="postSplashScreenTheme">@style/Base.Theme.PASProject</item>
     </style>
+
+    <style name="home" parent="Theme.Material3.DayNight">
+
+    </style>
+
+    <style name="internal" parent="Theme.Material3.DayNight">
+        <item name="homeAsUpIndicator">@drawable/arrow_back</item>
+        <item name="android:homeAsUpIndicator">@drawable/arrow_back</item>
+    </style>
 </resources>
