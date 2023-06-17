@@ -68,10 +68,10 @@
         android:name="com.projecstsft.pasproject.AirQualityFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/guideline5"
+        app:layout_constraintBottom_toTopOf="@+id/guideline11"
         app:layout_constraintEnd_toEndOf="@id/guideline8"
         app:layout_constraintStart_toStartOf="@id/guideline7"
-        app:layout_constraintTop_toTopOf="@+id/guideline4" />
+        app:layout_constraintTop_toTopOf="@+id/guideline10" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/welcome"
@@ -108,9 +108,9 @@
         android:name="com.projecstsft.pasproject.WeatherFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/guideline5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/AirQuality" />
+        app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
