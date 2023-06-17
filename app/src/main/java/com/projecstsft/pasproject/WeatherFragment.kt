@@ -1,6 +1,7 @@
 package com.projecstsft.pasproject
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -47,9 +48,13 @@ class WeatherFragment : Fragment() {
             { response ->
                 val weatherData = Gson().fromJson(response.toString(), WeatherData::class.java)
                 val weatherEmoji = getWeatherEmoji(weatherData.weather[0].main, isDayTime())
+                Log.i("response", response.toString())
+                binding.weatherImg.text = weatherEmoji
+                binding.weatherText.text = weatherData.weather[0].main
 
-                binding.weatherTextView.text = weatherEmoji
-                // temperatureTextView.text = "${weatherData.main.temp}°C"
+                binding.temperature.text = formatTemperature(weatherData.main.temp)
+                binding.day.text = getDayFromTimestamp(weatherData.dt)
+                binding.city.text = weatherData.name
             },
             { error -> error.printStackTrace() })
 
@@ -74,15 +79,37 @@ class WeatherFragment : Fragment() {
         return currentHour in 6..18
     }
 
+    private fun formatTemperature(temperature: Double): String {
+        // Formato: 25.6 °C
+        val formattedTemperature = String.format("%.1f", temperature - 273.15)
+        return "$formattedTemperature °C"
+    }
+
+    private fun getDayFromTimestamp(timestamp: Long): String {
+        val calendar = Calendar.getInstance()
+        calendar.timeInMillis = timestamp * 1000 // Convertir segundos a milisegundos
+
+        val dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK)
+        val days = arrayOf("Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado")
+
+        return days[dayOfWeek - 1] // Restar 1 para que el índice coincida con el día de la semana
+    }
+
     companion object {
         @JvmStatic fun newInstance() = WeatherFragment()
     }
 }
 
 data class WeatherData(
-    val weather: List<Weather>
+    val weather: List<Weather>,
+    val name: String,
+    val main: Main,
+    val dt: Long
 )
 
+data class Main(
+    val temp: Double
+)
 data class Weather(
     val main: String
 )
