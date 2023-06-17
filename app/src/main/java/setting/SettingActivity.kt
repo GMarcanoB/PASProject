@@ -48,13 +48,11 @@ class SettingActivity : AppCompatActivity() {
 
         CoroutineScope(Dispatchers.IO).launch {
             getSetting().filter { firstTime }.collect{settingModel ->
-                if(settingModel != null){
-                    runOnUiThread {
-                        binding.switchBluetooth.isChecked = settingModel.bluetooth
-                        binding.switchDarkMode.isChecked = settingModel.darkMode
-                        binding.rsVolume.setValues(settingModel.volume.toFloat())
-                        firstTime = !firstTime
-                    }
+                runOnUiThread {
+                    binding.switchBluetooth.isChecked = settingModel.bluetooth
+                    binding.switchDarkMode.isChecked = settingModel.darkMode
+                    binding.rsVolume.setValues(settingModel.volume.toFloat())
+                    firstTime = !firstTime
                 }
             }
         }

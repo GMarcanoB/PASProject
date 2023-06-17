@@ -5,41 +5,41 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LoginActivity">
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@id/guidelineCenter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5"
-        />
+        app:layout_constraintGuide_percent="0.5" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineStart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.9"
-        />
+        app:layout_constraintGuide_percent="0.9" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineEnd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.1"
-        />
+        app:layout_constraintGuide_percent="0.1" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineTop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.80"
-        />
+        app:layout_constraintGuide_percent="0.80" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineBottomB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.95"
-        />
+        app:layout_constraintGuide_percent="0.95" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineHcenter"
@@ -61,62 +61,33 @@
         android:layout_height="50dp"
         android:layout_marginTop="50dp"
         android:layout_weight="10"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
         android:paddingLeft="60dp"
         android:paddingRight="60dp"
         android:text="@string/login"
         android:textColor="@color/white"
         android:textColorHighlight="@color/material_dynamic_primary50"
-        android:textColorLink="@color/design_default_color_primary_dark"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/guidelineBottomB"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guidelineStart"
-        app:layout_constraintStart_toStartOf="@+id/guidelineEnd"
+        app:layout_constraintHorizontal_bias="0.608"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/forgotpswd"
-        app:layout_constraintVertical_bias="0.208" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/forgotpswd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="60dp"
         android:text="@string/forgottext"
         android:textColor="@color/btnlink"
         app:layout_constraintEnd_toStartOf="@+id/guidelineStart"
         app:layout_constraintStart_toStartOf="@+id/guidelineEnd"
         app:layout_constraintTop_toBottomOf="@+id/textPassword" />
-
-    <EditText
-        android:id="@+id/textPassword"
-        android:layout_width="330dp"
-        android:layout_height="wrap_content"
-        android:autofillHints=""
-        android:hint="@string/password"
-        android:inputType="text|textPassword"
-        android:maxLength="8"
-        android:minHeight="50dp"
-        android:nextFocusDown="@id/loginButton"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toStartOf="@+id/guidelineStart"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/guidelineEnd"
-        app:layout_constraintTop_toBottomOf="@+id/textEmail" />
-
-    <EditText
-        android:id="@+id/textEmail"
-        android:layout_width="330dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:autofillHints="@string/email"
-        android:hint="@string/email"
-        android:inputType="text|textEmailAddress|textAutoComplete"
-        android:minHeight="50dp"
-        android:nextFocusDown="@id/textPassword"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@id/textPassword"
-        app:layout_constraintEnd_toStartOf="@+id/guidelineStart"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/guidelineEnd"
-        app:layout_constraintTop_toBottomOf="@id/logo" />
 
     <ImageView
         android:id="@+id/logo"
@@ -127,13 +98,11 @@
         android:contentDescription="@string/app_name"
         android:scaleType="fitXY"
         android:src="@drawable/logo2"
-        app:layout_constraintBottom_toTopOf="@id/textEmail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guidelineBottom"
-        app:layout_constraintVertical_bias="0.5" />
+        app:layout_constraintTop_toTopOf="@+id/guidelineBottom" />
 
     <TextView
         android:id="@+id/newaccount"
@@ -153,8 +122,8 @@
         android:layout_height="0dp"
         android:clickable="true"
         android:focusable="true"
-        android:singleLine="true"
         android:gravity="center"
+        android:singleLine="true"
         android:text="@string/newregister"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
         android:textColor="@color/btnlink"
@@ -164,5 +133,40 @@
         app:layout_constraintStart_toEndOf="@+id/newaccount"
         app:layout_constraintTop_toBottomOf="@+id/loginButton"
         app:layout_constraintVertical_bias="0.5" />
+
+    <EditText
+        android:id="@+id/textPassword"
+        android:layout_width="330dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        android:autofillHints=""
+        android:hint="@string/password"
+        android:inputType="text|textPassword"
+        android:maxLength="8"
+        android:minHeight="50dp"
+        android:nextFocusDown="@id/loginButton"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineStart"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guidelineEnd"
+        app:layout_constraintTop_toBottomOf="@+id/textEmail" />
+
+    <EditText
+        android:id="@+id/textEmail"
+        android:layout_width="330dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="10dp"
+        android:autofillHints=" "
+        android:layout_marginTop="56dp"
+        android:hint="@string/email"
+        android:inputType="text|textEmailAddress"
+        android:minHeight="50dp"
+        android:nextFocusDown="@id/textPassword"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@id/textPassword"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineStart"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guidelineEnd"
+        app:layout_constraintTop_toBottomOf="@id/logo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

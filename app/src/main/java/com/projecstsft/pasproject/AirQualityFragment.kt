@@ -12,6 +12,7 @@ import okhttp3.*
 import org.json.JSONObject
 import android.util.Log
 import com.projecstsft.pasproject.databinding.FragmentAirQualityBinding
+import kotlinx.coroutines.DelicateCoroutinesApi
 import java.io.IOException
 
 class AirQualityFragment : Fragment() {
@@ -38,6 +39,7 @@ class AirQualityFragment : Fragment() {
 
     }
 
+    @OptIn(DelicateCoroutinesApi::class)
     private fun fetchAirQualityData() {
         val client = OkHttpClient()
         val request = Request.Builder()
