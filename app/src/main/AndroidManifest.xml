@@ -31,13 +31,15 @@
         <activity
             android:name=".RegisterActivity"
             android:exported="false" />
-        <activity
+        <!-- <activity
             android:theme="@style/home"
             android:name=".MainActivity"
-            android:exported="false"/>
-        <activity
+            android:exported="false"/> -->
+        <activity android:name=".MainActivity" android:exported="false"/>
+        <!--<activity
             android:theme="@style/internal"
-            android:name="setting.SettingActivity" />
+            android:name="setting.SettingActivity" /> -->
+        <activity android:name="setting.SettingActivity" />
     </application>
 
 </manifest>

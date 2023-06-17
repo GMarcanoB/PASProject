@@ -3,11 +3,15 @@ package com.projecstsft.pasproject
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.projecstsft.pasproject.databinding.ActivityMainBinding
 import setting.SettingActivity
 import android.view.Menu
 import android.view.MenuItem
+import androidx.fragment.app.commit
+import com.projecstsft.pasproject.databinding.ActivityMainBinding
 
+enum class ProviderType{
+    BASIC
+}
 class MainActivity : AppCompatActivity() {
     private lateinit var mainBinding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,6 +19,11 @@ class MainActivity : AppCompatActivity() {
 
         mainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mainBinding.root)
+
+       /* supportFragmentManager.commit {
+            setReorderingAllowed(true)
+          //  add()
+        }*/
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
