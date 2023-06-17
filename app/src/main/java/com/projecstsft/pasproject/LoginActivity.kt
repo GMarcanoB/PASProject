@@ -49,7 +49,7 @@ class LoginActivity : AppCompatActivity() {
             .addOnCompleteListener(this){task ->
                 if(task.isSuccessful){
                     val user = auth.currentUser
-                   // Toast.makeText(this,"Operación Exitosa!", Toast.LENGTH_SHORT).show()
+                    // Toast.makeText(this,"Operación Exitosa!", Toast.LENGTH_SHORT).show()
                     updateUI(user)
                     val intent =  Intent(this, MainActivity::class.java)
                     //intent.putExtra("name", registerBinding.regName.text.toString())

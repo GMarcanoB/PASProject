@@ -107,38 +107,20 @@
      android:id="@+id/regPassword"
      android:layout_width="330dp"
      android:layout_height="50dp"
-     android:layout_marginBottom="10dp"
      android:autofillHints="@string/password"
      android:hint="@string/password"
      android:inputType="textPassword"
      android:textSize="16sp"
-     app:layout_constraintBottom_toTopOf="@+id/regConfirm"
      app:layout_constraintEnd_toEndOf="@id/guidelineStart"
      app:layout_constraintHorizontal_bias="0.5"
      app:layout_constraintStart_toStartOf="@+id/guidelineEnd"
      app:layout_constraintTop_toBottomOf="@+id/regEmail" />
-
- <EditText
-     android:id="@+id/regConfirm"
-     android:layout_width="330dp"
-     android:layout_height="50dp"
-     android:layout_marginBottom="10dp"
-     android:autofillHints="@string/confirm"
-     android:hint="@string/confirm"
-     android:inputType="textPassword"
-     android:textSize="16sp"
-     app:layout_constraintBottom_toTopOf="@+id/regBtn"
-     app:layout_constraintEnd_toEndOf="@id/guidelineStart"
-     app:layout_constraintHorizontal_bias="0.5"
-     app:layout_constraintStart_toStartOf="@+id/guidelineEnd"
-     app:layout_constraintTop_toBottomOf="@id/regPassword" />
 
  <Button
      android:id="@+id/regBtn"
      android:layout_width="150dp"
      android:layout_height="50dp"
      android:layout_marginStart="80dp"
-     android:layout_marginTop="20dp"
      android:layout_marginEnd="80dp"
      android:clickable="true"
      android:focusable="true"
@@ -147,8 +129,7 @@
      app:layout_constraintBottom_toTopOf="@+id/guidelineTop"
      app:layout_constraintEnd_toEndOf="@id/guidelineStart"
      app:layout_constraintHorizontal_bias="0.5"
-     app:layout_constraintStart_toStartOf="@+id/guidelineEnd"
-     app:layout_constraintTop_toBottomOf="@+id/regConfirm" />
+     app:layout_constraintStart_toStartOf="@+id/guidelineEnd" />
 
  <TextView
      android:id="@+id/textlogin"

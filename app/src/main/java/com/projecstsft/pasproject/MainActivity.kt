@@ -9,9 +9,6 @@ import android.view.MenuItem
 import androidx.fragment.app.commit
 import com.projecstsft.pasproject.databinding.ActivityMainBinding
 
-enum class ProviderType{
-    BASIC
-}
 class MainActivity : AppCompatActivity() {
     private lateinit var mainBinding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
