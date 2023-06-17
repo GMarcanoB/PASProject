@@ -1,5 +1,8 @@
 package com.projecstsft.pasproject
 
+import android.graphics.Color
+import android.graphics.drawable.GradientDrawable
+import android.graphics.drawable.ShapeDrawable
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -55,11 +58,65 @@ class WeatherFragment : Fragment() {
                 binding.temperature.text = formatTemperature(weatherData.main.temp)
                 binding.day.text = getDayFromTimestamp(weatherData.dt)
                 binding.city.text = weatherData.name
+
+                updateWeatherCardBackground(weatherData.weather[0].main, isDayTime())
             },
             { error -> error.printStackTrace() })
 
         requestQueue.add(jsonObjectRequest)
     }
+
+    private fun updateWeatherCardBackground(weather: String, isDayTime: Boolean) {
+        val startColor: Int
+        val endColor: Int
+
+        when (weather.lowercase()) {
+            "clear" -> {
+                if (isDayTime) {
+                    startColor = Color.parseColor("#FF6B00") // Color naranja
+                    endColor = Color.parseColor("#FFD600") // Color amarillo
+                } else {
+                    startColor = Color.parseColor("#192A49") // Color azul oscuro
+                    endColor = Color.parseColor("#000000") // Color negro
+                }
+            }
+            "clouds" -> {
+                startColor = Color.parseColor("#6088A0") // Color azul claro
+                endColor = Color.parseColor("#FFFFFF") // Color blanco
+            }
+            "rain" -> {
+                startColor = Color.parseColor("#4D71A3") // Color azul
+                endColor = Color.parseColor("#90A4BF") // Color azul claro
+            }
+            "snow" -> {
+                startColor = Color.parseColor("#C7D8F3") // Color azul claro
+                endColor = Color.parseColor("#FFFFFF") // Color blanco
+            }
+            "thunderstorm" -> {
+                startColor = Color.parseColor("#293955") // Color azul oscuro
+                endColor = Color.parseColor("#677C95") // Color azul grisáceo
+            }
+            "drizzle" -> {
+                startColor = Color.parseColor("#9CAFBF") // Color azul verdoso
+                endColor = Color.parseColor("#D1E1E9") // Color azul claro
+            }
+            else -> {
+                startColor = Color.parseColor("#000000") // Color negro
+                endColor = Color.parseColor("#000000") // Color negro
+            }
+        }
+
+        val gradient = GradientDrawable(GradientDrawable.Orientation.BOTTOM_TOP, intArrayOf(startColor, endColor))
+        gradient.gradientRadius = 400f
+        gradient.gradientType = GradientDrawable.LINEAR_GRADIENT
+        gradient.cornerRadius = resources.getDimensionPixelSize(R.dimen.card_corner_radius).toFloat()
+
+        binding.WeatherCard.apply {
+            background = gradient
+            invalidate() // Actualizar el fondo de la tarjeta
+        }
+    }
+
 
     private fun getWeatherEmoji(weather: String, isDayTime: Boolean): String {
         return when (weather.lowercase()) {

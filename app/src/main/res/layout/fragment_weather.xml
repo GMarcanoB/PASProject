@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".WeatherFragment">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/WeatherCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:elevation="4dp">
 
         <LinearLayout
@@ -17,18 +22,19 @@
             android:orientation="horizontal">
 
             <LinearLayout
-                android:layout_margin="16dp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="16dp"
                 android:layout_weight="1"
                 android:gravity="center|left"
                 android:orientation="vertical">
 
                 <TextView
+                    android:textColor="@color/white"
                     android:id="@+id/weatherText"
-                    android:hint="Clima"
-                    android:layout_height="20sp"
                     android:layout_width="match_parent"
+                    android:layout_height="20sp"
+                    android:hint="Clima"
                     android:textSize="16sp" />
 
                 <TextView
@@ -36,26 +42,27 @@
                     android:layout_width="match_parent"
                     android:layout_height="100sp"
                     android:alpha="50"
-                    android:hint="❄️"
                     android:gravity="center|center_vertical"
+                    android:hint="❄️"
                     android:textSize="60sp" />
             </LinearLayout>
 
             <View
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
                 android:layout_width="2dp"
                 android:layout_height="match_parent"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
                 android:background="#FFFFFF" />
 
             <LinearLayout
-                android:layout_margin="16dp"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_margin="16dp"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
                 <TextView
+                    android:textColor="@color/white"
                     android:id="@+id/city"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -64,21 +71,23 @@
                     android:textStyle="normal" />
 
                 <TextView
-                    android:layout_marginTop="8dp"
+                    android:textColor="@color/white"
                     android:id="@+id/day"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:hint="Day"
                     android:textSize="16sp" />
 
                 <TextView
+                    android:textColor="@color/white"
                     android:id="@+id/temperature"
                     android:layout_width="wrap_content"
                     android:layout_height="80sp"
                     android:gravity="center|center_vertical"
                     android:hint="25°C"
-                    android:textStyle="bold"
-                    android:textSize="25sp" />
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
