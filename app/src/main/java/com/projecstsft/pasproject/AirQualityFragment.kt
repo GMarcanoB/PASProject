@@ -1,5 +1,6 @@
 package com.projecstsft.pasproject
 
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -54,12 +55,37 @@ class AirQualityFragment : Fragment() {
                 }
 
                 override fun onResponse(call: Call, response: Response) {
-                    val jsonData = response.body?.string()
-                    val airQualityIndex = parseAirQualityIndex(jsonData)
-                    updateEmoji(airQualityIndex)
+                    updateInfo(response.body?.string())
                 }
             })
         }
+    }
+
+    private fun updateInfo(jsonData: String?) {
+        //Log.i("jsonData", jsonData.toString())
+        //jsonData: {"status":"success","data":{"city":"Moncloa-Aravaca","state":"Madrid","country":"Spain","location":{"type":"Point","coordinates":[-3.7317,40.43547]},"current":{"pollution":{"ts":"2023-06-17T21:00:00.000Z","aqius":34,"mainus":"p2","aqicn":12,"maincn":"p2"},"weather":{"ts":"2023-06-17T21:00:00.000Z","tp":26,"pr":1010,"hu":50,"ws":2.57,"wd":260,"ic":"01n"}}}}
+        val airQualityIndex = parseAirQualityIndex(jsonData)
+        updateAirQualityCardBackground(airQualityIndex)
+
+        activity?.runOnUiThread {
+            binding.emoji.text = getEmoji(airQualityIndex)
+            binding.number.text = airQualityIndex.toString()
+            binding.quality.text = getAirQualityTerm(airQualityIndex)
+            binding.state.text = getState(jsonData)
+            binding.city.text = getCity(jsonData)
+        }
+    }
+
+    private fun getState(jsonData: String?): CharSequence? {
+        return JSONObject(jsonData)
+            .getJSONObject("data")
+            .getString("state")
+    }
+
+    private fun getCity(jsonData: String?): String{
+        return JSONObject(jsonData)
+            .getJSONObject("data")
+            .getString("city")
     }
 
     private fun parseAirQualityIndex(jsonData: String?): Int {
@@ -70,22 +96,44 @@ class AirQualityFragment : Fragment() {
             .getInt("aqius")
     }
 
-    private fun updateEmoji(airQualityIndex: Int) {
-        val emoji: String = when {
+    private fun getEmoji(airQualityIndex: Int): String {
+        return when {
             airQualityIndex <= 50 -> "😀" // Buena calidad del aire
             airQualityIndex <= 100 -> "😊" // Calidad del aire moderada
             airQualityIndex <= 150 -> "😷" // Calidad del aire no saludable para grupos sensibles
             else -> "🤢" // Calidad del aire no saludable
         }
+    }
 
-        activity?.runOnUiThread {
-            binding.emojiTextView.text = emoji
-            binding.numberTextView.text = airQualityIndex.toString()
+    private fun getAirQualityTerm(airQualityIndex: Int): String {
+        return when {
+            airQualityIndex <= 50 -> "Buena"
+            airQualityIndex <= 100 -> "Moderada"
+            airQualityIndex <= 150 -> "No saludable"
+            else -> "No saludable"
         }
     }
+
+    private fun updateAirQualityCardBackground(airQualityIndex: Int) {
+        val cardView = binding.AirQualityCard
+
+        val backgroundColor: Int = when {
+            airQualityIndex <= 50 -> Color.parseColor("#a8e05f")
+            airQualityIndex <= 100 -> Color.parseColor("#efbe1d")
+            airQualityIndex <= 150 -> Color.parseColor("#f27e2f")
+            else -> Color.BLACK
+        }
+
+        val cornerRadius = resources.getDimension(R.dimen.card_corner_radius)
+        cardView.apply {
+            setCardBackgroundColor(backgroundColor)
+            radius = cornerRadius
+        }
+    }
+
+
     companion object {
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            AirQualityFragment()
+        fun newInstance() = AirQualityFragment()
     }
 }
