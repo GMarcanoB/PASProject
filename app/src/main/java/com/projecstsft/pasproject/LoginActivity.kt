@@ -7,28 +7,39 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ktx.database
+import com.google.firebase.firestore.IgnoreExtraProperties
 import com.google.firebase.ktx.Firebase
 import com.projecstsft.pasproject.databinding.ActivityLoginBinding
 import com.projecstsft.pasproject.databinding.ActivityRegisterBinding
+import com.google.firebase.firestore.auth.User as Users
 
 
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var loginBinding: ActivityLoginBinding
-    private lateinit var registerBinding: ActivityRegisterBinding
+    private lateinit var database: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         loginBinding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(loginBinding.root)
 
+        database = Firebase.database.reference
         auth = Firebase.auth
 
         val email = loginBinding.textEmail.text
         val password = loginBinding.textPassword.text
 
         title = "Autenticación"
+
+        val currentUser = auth.currentUser
+        if (currentUser != null) {
+            reload()
+        }
 
         loginBinding.loginButton.setOnClickListener {
             checkData(email.toString(), password.toString())
@@ -45,14 +56,15 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun logIn(email:String, password: String){
-        auth.signInWithEmailAndPassword(email, password)
+       auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this){task ->
                 if(task.isSuccessful){
                     val user = auth.currentUser
                     // Toast.makeText(this,"Operación Exitosa!", Toast.LENGTH_SHORT).show()
                     updateUI(user)
-                    val intent =  Intent(this, MainActivity::class.java)
-                    //intent.putExtra("name", registerBinding.regName.text.toString())
+                    val intent =  Intent(this, MainActivity::class.java).apply {
+                        putExtra("email", email)
+                    }
                     startActivity(intent)
                 }
                 else{
@@ -83,6 +95,7 @@ class LoginActivity : AppCompatActivity() {
             }
         }
     }
+
     private fun goRegister(){
         loginBinding.signup.setOnClickListener{
             val intent = Intent(this,RegisterActivity::class.java)

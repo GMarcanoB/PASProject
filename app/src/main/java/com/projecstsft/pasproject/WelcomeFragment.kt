@@ -1,28 +1,47 @@
 package com.projecstsft.pasproject
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.constraintlayout.widget.ConstraintLayoutStates.TAG
+import androidx.lifecycle.findViewTreeViewModelStoreOwner
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
 class WelcomeFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private lateinit var auth: FirebaseAuth
+
+    private var name: String? = null
+    private var email: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        auth = FirebaseAuth.getInstance()
+        val db = Firebase.firestore
+
+        db.collection("users")
+            .get()
+            .addOnSuccessListener { result ->
+                for (document in result) {
+                    Log.d(TAG, "${document.id} => ${document.data}")
+                }
+            }
+            .addOnFailureListener { exception ->
+               Log.w(TAG, "Error getting documents.", exception)
+            }
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+            name = it.getString(NAME_BUNDLE)
+            email = it.getString(EMAIL_BUNDLE)
         }
     }
 
-    override fun onCreateView(
+       override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
@@ -31,14 +50,17 @@ class WelcomeFragment : Fragment() {
     }
 
     companion object {
-
+        const val NAME_BUNDLE = "name_bundle"
+        const val EMAIL_BUNDLE = "email_bundle"
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
+        fun newInstance(name: String, email: String) =
             WelcomeFragment().apply {
                 arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+                    putString(NAME_BUNDLE, name)
+                    putString(EMAIL_BUNDLE, email)
                 }
             }
+
     }
+
 }
