@@ -118,9 +118,9 @@ class AirQualityFragment : Fragment() {
         val cardView = binding.AirQualityCard
 
         val backgroundColor: Int = when {
-            airQualityIndex <= 50 -> Color.parseColor("#a8e05f")
-            airQualityIndex <= 100 -> Color.parseColor("#efbe1d")
-            airQualityIndex <= 150 -> Color.parseColor("#f27e2f")
+            airQualityIndex <= 50 -> Color.parseColor("#ace09b")
+            airQualityIndex <= 100 -> Color.parseColor("#efc27d")
+            airQualityIndex <= 150 -> Color.parseColor("#f09898")
             else -> Color.BLACK
         }
 

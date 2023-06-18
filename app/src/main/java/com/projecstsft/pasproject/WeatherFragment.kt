@@ -73,8 +73,8 @@ class WeatherFragment : Fragment() {
         when (weather.lowercase()) {
             "clear" -> {
                 if (isDayTime) {
-                    startColor = Color.parseColor("#FF6B00") // Color naranja
-                    endColor = Color.parseColor("#FFD600") // Color amarillo
+                    startColor = Color.parseColor("#ffb571") // Color naranja
+                    endColor = Color.parseColor("#fff877") // Color amarillo
                 } else {
                     startColor = Color.parseColor("#192A49") // Color azul oscuro
                     endColor = Color.parseColor("#000000") // Color negro

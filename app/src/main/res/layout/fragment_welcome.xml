@@ -14,14 +14,15 @@
 
         <TextView
             android:id="@+id/textHello"
-            android:layout_width="0dp"
+            android:layout_width="131dp"
             android:layout_height="120dp"
             android:layout_weight="1"
-            android:gravity="center_vertical"
-            android:textAlignment="center"
+            android:gravity="center|center_vertical"
             android:text="@string/hello"
+            android:textAlignment="center"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="24sp"
+            android:textColor="#C3175259"
+            android:textSize="40sp"
             android:textStyle="bold" />
 
         <ImageView
