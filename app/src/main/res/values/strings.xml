@@ -18,4 +18,5 @@
     <string name="settings">Ajustes</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_fragment">¡Hola!</string>
+    <string name="hello">Bienvenido</string>
 </resources>
