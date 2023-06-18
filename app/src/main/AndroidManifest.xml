@@ -42,7 +42,10 @@
         <!--<activity
             android:theme="@style/internal"
             android:name="setting.SettingActivity" /> -->
-        <activity android:name="setting.SettingActivity" />
+        <activity
+            android:theme="@style/Theme.Material3.DynamicColors.DayNight"
+            android:exported="false"
+            android:name="setting.SettingActivity" />
     </application>
 
 </manifest>
