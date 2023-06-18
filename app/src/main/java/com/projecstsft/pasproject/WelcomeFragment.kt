@@ -1,24 +1,26 @@
 package com.projecstsft.pasproject
 
+import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayoutStates.TAG
-import androidx.lifecycle.findViewTreeViewModelStoreOwner
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-
+import com.google.firebase.auth.FirebaseUser
 
 class WelcomeFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
-
     private var name: String? = null
     private var email: String? = null
-
+    private lateinit var textwelcome : TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -37,7 +39,6 @@ class WelcomeFragment : Fragment() {
             }
         arguments?.let {
             name = it.getString(NAME_BUNDLE)
-            email = it.getString(EMAIL_BUNDLE)
         }
     }
 
@@ -46,21 +47,24 @@ class WelcomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+           var textWelcome: String = R.id.textHello.toString()
+           textWelcome = auth.currentUser?.email.toString()
         return inflater.inflate(R.layout.fragment_welcome, container, false)
+
     }
 
     companion object {
-        const val NAME_BUNDLE = "name_bundle"
-        const val EMAIL_BUNDLE = "email_bundle"
+        val ADDREES_BUNDLE = "email"
+        val NAME_BUNDLE = "name"
         @JvmStatic
-        fun newInstance(name: String, email: String) =
+        fun newInstance(name: String) =
             WelcomeFragment().apply {
                 arguments = Bundle().apply {
-                    putString(NAME_BUNDLE, name)
-                    putString(EMAIL_BUNDLE, email)
+                    putString(NAME_BUNDLE, "name")
                 }
             }
 
     }
 
 }
+

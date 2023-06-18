@@ -26,11 +26,11 @@ class MainActivity : AppCompatActivity() {
         bundlea.putString("message","Conexión con Analytics completa")
         fanalytics.logEvent("initScreen",bundlea)
 
-        welcomeBinding = FragmentWelcomeBinding.inflate(layoutInflater)
+       welcomeBinding = FragmentWelcomeBinding.inflate(layoutInflater)
         val bundle = intent.extras
         val email = bundle?.getString("mail")
         welcomeFragment(email?: "")
-        title = "Home"
+        title = "InfoData"
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
