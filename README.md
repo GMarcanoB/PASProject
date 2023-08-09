@@ -2,7 +2,7 @@
 
 Este proyecto se desarrollo en Kotlin aborda todos los conocimientos adquiridos durante la asignatura.
 Para ello se pide realizar una aplicación en la cual el alumno debe utilizar estos conocimientos y su capacidad como ingeniero para realizar una aplicación en Android
-con las siguientes ** funcionalidades **:
+con las siguientes **funcionalidades**:
 
 - Autenticación de Usuarios, mediante email/password, mediate Firebase Authentication.
 - Conexión a un servicio API externo de datos abiertos (webservice) para extraer información (por ejemplo: el tiempo mi localización,
