@@ -1,4 +1,4 @@
-# PASProject
+# InfoData-PASProject
 
 Este proyecto se desarrollo en **Kotlin**.
 Se desarrolla en **Android Studio** y posee las siguientes **funcionalidades**:
